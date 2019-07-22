@@ -1,0 +1,11 @@
+include flaskr/schema.sql
+graft flaskr/common
+graft flaskr/data_handlers
+graft flaskr/models
+graft flaskr/static
+graft flaskr/templates
+graft flaskr/views
+
+global-exclude *.pyc
+
+http://flask.pocoo.org/docs/dev/tutorial/install/

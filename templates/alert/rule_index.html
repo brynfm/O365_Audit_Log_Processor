@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <header>
+        <h1>Pass and Raise Rules</h1>
+        <p>Pass rules are conditions that if met will not raise an alert.</p>
+        <p>Raise ruse are conditions that if met will raise an alert provided the pass rule was not met.</p>
+    </header>
+
+    <div class="table table-striped table-hover table-responsive">
+        <table>
+            <thead class="thead-dark">
+            <tr>
+                <th>Type</th>
+                <th>Rule</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            {% for rule in rules %}
+            <tr>
+                <td>{{ rule.type }}</td>
+                <td>{{ rule.rule }}</td>
+                <td><a class="btn btn-info" href="{{ url_for('alert.rule_detail', type=rule.type) }}">Edit</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>No rules</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+{% endblock %}

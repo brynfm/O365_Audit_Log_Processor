@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <header>
+        <h1>Edit {{ rule.type }} rule</h1>
+        <p>The system uses the python eval function to interpret the string.</p>
+        <p>See https://www.tutorialspoint.com/python/python_basic_operators for more information on basic operators</p>
+        <h5>There are many row attributes you can use in the rule, some are:</h5>
+        <p>Errors and status: 'LogonError', 'LogonType', 'ResultStatus', 'ExternalAccess' </p>
+        <p>Operation type: 'Operation', 'SharingType' </p>
+        <p>File Properties: 'FileName', 'SourceFileExtension', 'DestinationFileName', 'DestinationFileExtension', 'SourceFileName', </p>
+        <p>System Properties: 'ApplicationId', 'Workload', 'Site', 'SiteUrl',</p>
+        <p>User Details: 'UserId', 'ClientIPAddress', 'ClientIP', 'UserType', 'UserAgent'</p>
+        <p>Location: 'city', 'region', 'country', 'postal', 'org'</p>
+    </header>
+    
+    <section class="update-zone-form">
+        <form method="post">
+            <div class="form-group">
+                <label for="rule_input">Rule Input:</label>
+                <input type="text" class="form-control" id="rule_input" name="rule_input" placeholder="Rule"
+                       value="{{ rule.rule }}" aria-describedby="tagRuleHelp"/>
+                <small id="tagRuleHelp">
+                    Edit the rule
+                </small>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid row">
+    <div class="col-sm-6">
+        <header>
+            <h1>Uploaded Files</h1>
+        </header>
+
+        <div class="mb-3">
+            <h5>Process uploaded files</h5>
+            <form action="{{url_for('file.file_index')}}" method="POST" enctype="multipart/form-data">
+                <input type = "submit"/>
+            </form>
+        </div>
+
+        <h5>Files ready to be processed:</h5>
+        <div class="table table-striped table-hover table-responsive">
+            <table>
+                <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                {% for u_file in u_files|sort %}
+                <tr>
+                    <td>{{ u_file }}</td>
+                    <td><a class="btn btn-danger" href="{{ url_for('file.delete_uploaded_file', u_file=u_file) }}">Delete</a></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>No uploaded files</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <header>
+            <h1>Processed Files</h1>
+        </header>
+
+        <div class="table table-striped table-hover table-responsive">
+            <h5>List of processed files:</h5>
+            <table>
+                <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Download</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                {% for p_file in p_files|sort %}
+                <tr>
+                    <td>{{ p_file }}</td>
+                    <td><a class="btn btn-success" href="{{ url_for('file.download_process_file', p_file=p_file) }}">Download</a></td>
+                    <td><a class="btn btn-danger" href="{{ url_for('file.delete_process_file', p_file=p_file) }}">Delete</a></td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td>No processed files</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

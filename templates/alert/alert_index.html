@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <header>
+        <h1>Alerts</h1>
+    </header>
+
+    <div class="mb-3">
+        <h5>Edit rules that trigger alerts</h5>
+        <a class="btn btn-success" href="{{ url_for('alert.rule_index') }}">Rules</a>
+    </div>
+
+    <div class="table table-striped table-hover table-responsive">
+        <h5>Users with alerts:</h5>
+        <table>
+            <thead class="thead-dark">
+            <tr>
+                <th>User ID</th>
+                <th>View</th>
+            </tr>
+            </thead>
+            {% for user in users|sort %}
+            <tr>
+                <td>{{ user }}</td>
+                <td><a class="btn btn-info" href="{{ url_for('alert.user_alert', user_id=user) }}">Details</a></td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>No alerts</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
