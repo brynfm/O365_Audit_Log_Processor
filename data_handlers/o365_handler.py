@@ -231,14 +231,7 @@ class o365:
 
 
     def ip_info_func(self, ip_address, access_token):
-        # Bryn
-        # access_token = '4b8a2af90147b5'
-        # access_token = ['4b8a2af90147b5','d9c112d971b1bd','4daea41e191295']
-        # Josh:
-        # access_token = 'd9c112d971b1bd'
-
-        # Josh 2:
-        # access_token = '4daea41e191295'
+        
         counter = 0
         while True:
             if counter == 3:
